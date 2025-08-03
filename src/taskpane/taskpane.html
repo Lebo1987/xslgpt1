@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XSLGPT1 - AI Formula Generator</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="header">
+            <h1>XSLGPT1</h1>
+            <p>AI-Powered Excel Formula Generator</p>
+        </div>
+        
+        <div class="input-section">
+            <label for="prompt-input">Describe what you want to calculate:</label>
+            <textarea 
+                id="prompt-input" 
+                placeholder="e.g., Sum from A1 to A10, Average of B1:B20, Count non-empty cells in C1:C50..."
+                rows="3"
+            ></textarea>
+            
+            <button id="generate-btn" class="primary-btn">
+                <span class="btn-text">Generate Formula</span>
+                <span class="btn-loading" style="display: none;">Generating...</span>
+            </button>
+        </div>
+        
+        <div id="result-section" class="result-section" style="display: none;">
+            <div class="result-header">
+                <h3>Generated Formula</h3>
+            </div>
+            
+            <div class="formula-container">
+                <div class="formula-label">Formula:</div>
+                <div id="formula-display" class="formula-display"></div>
+                <button id="copy-btn" class="copy-btn">Copy</button>
+            </div>
+            
+            <div class="explanation-container">
+                <div class="explanation-label">Explanation:</div>
+                <div id="explanation-display" class="explanation-display"></div>
+            </div>
+            
+            <button id="insert-btn" class="secondary-btn">Insert into Excel</button>
+        </div>
+        
+        <div id="error-section" class="error-section" style="display: none;">
+            <div class="error-message" id="error-message"></div>
+        </div>
+    </div>
+</body>
+</html> 
