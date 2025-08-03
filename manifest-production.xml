@@ -34,17 +34,6 @@
 
   <Permissions>ReadWriteDocument</Permissions>
 
-  <!-- Begin Add-in Commands Mode integration. -->
-  <Hosts>
-    <Host Name="Workbook" />
-  </Hosts>
-  <DefaultSettings>
-    <SourceLocation DefaultValue="https://xslgpt1-excel-addin.onrender.com/taskpane.html"/>
-  </DefaultSettings>
-  <!-- End Add-in Commands Mode integration.  -->
-
-  <Permissions>ReadWriteDocument</Permissions>
-
   <!-- Begin TaskPane Mode integration. -->
   <Hosts>
     <Host Name="Workbook" />

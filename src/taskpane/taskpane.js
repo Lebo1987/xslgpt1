@@ -36,7 +36,7 @@ async function generateFormula() {
     hideResult();
     
     try {
-        const response = await fetch('/api/generate', {
+        const response = await fetch('https://xslgpt1-excel-addin.onrender.com/api/generate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
