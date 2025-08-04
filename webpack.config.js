@@ -2,11 +2,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/taskpane/taskpane.js',
+  entry: {
+    taskpane: './src/taskpane/taskpane.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'taskpane.js',
-    clean: true
+    filename: '[name].js',
+    clean: true,
   },
   module: {
     rules: [
@@ -19,15 +21,17 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/taskpane/taskpane.html',
-      filename: 'taskpane.html'
-    })
+      filename: 'taskpane.html',
+      chunks: ['taskpane'], // חשוב: רק taskpane
+    }),
   ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    port: 3000,
-    hot: true
-  }
-}; 
+    port: 8080, // שים לב: חייב להיות 8080 לפי manifest.xml
+    https: true, // חובה עבור sideloading ל־Excel
+    hot: true,
+  },
+};
