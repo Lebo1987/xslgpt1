@@ -12,15 +12,15 @@
   <DisplayName DefaultValue="XSLGPT"/>
   <Description DefaultValue="AI-Powered Excel Formula Generator"/>
 
-  <IconUrl DefaultValue="https://localhost:8080/assets/icon-32.png"/>
-  <SupportUrl DefaultValue="https://localhost:8080/help"/>
+  <IconUrl DefaultValue="https://xslgpt1-excel-addin.onrender.com/assets/icon-32.png"/>
+  <SupportUrl DefaultValue="https://xslgpt1-excel-addin.onrender.com/help"/>
 
   <Hosts>
     <Host Name="Workbook"/>
   </Hosts>
 
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:8080/taskpane.html"/>
+    <SourceLocation DefaultValue="https://xslgpt1-excel-addin.onrender.com/taskpane.html"/>
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
@@ -62,12 +62,12 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon16" DefaultValue="https://localhost:8080/assets/icon-16.png"/>
-        <bt:Image id="Icon32" DefaultValue="https://localhost:8080/assets/icon-32.png"/>
-        <bt:Image id="Icon80" DefaultValue="https://localhost:8080/assets/icon-80.png"/>
+        <bt:Image id="Icon16" DefaultValue="https://xslgpt1-excel-addin.onrender.com/assets/icon-16.png"/>
+        <bt:Image id="Icon32" DefaultValue="https://xslgpt1-excel-addin.onrender.com/assets/icon-32.png"/>
+        <bt:Image id="Icon80" DefaultValue="https://xslgpt1-excel-addin.onrender.com/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="TaskPane.Url" DefaultValue="https://localhost:8080/taskpane.html"/>
+        <bt:Url id="TaskPane.Url" DefaultValue="https://xslgpt1-excel-addin.onrender.com/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="XSLGPT"/>
