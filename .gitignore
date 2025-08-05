@@ -15,6 +15,9 @@ build/
 .env.test.local
 .env.production.local
 
+# Usage tracking data
+usage_data.json
+
 # IDE files
 .vscode/
 .idea/

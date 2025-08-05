@@ -14,6 +14,16 @@
             <p>AI-Powered Excel Formula Generator</p>
         </div>
         
+        <div class="user-section">
+            <label for="user-email">Your Email:</label>
+            <input 
+                type="email" 
+                id="user-email" 
+                placeholder="your.email@example.com"
+                class="email-input"
+            />
+        </div>
+        
         <div class="input-section">
             <label for="prompt-input">Describe what you want to calculate:</label>
             <textarea 
@@ -43,6 +53,8 @@
                 <div class="explanation-label">Explanation:</div>
                 <div id="explanation-display" class="explanation-display"></div>
             </div>
+            
+            <div id="usage-display" class="usage-display" style="display: none;"></div>
             
             <button id="insert-btn" class="secondary-btn">Insert into Excel</button>
         </div>

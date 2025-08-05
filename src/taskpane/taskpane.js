@@ -13,21 +13,38 @@ Office.onReady((info) => {
                 generateFormula();
             }
         });
+
+        // Load user email from localStorage or use default
+        loadUserEmail();
     }
 });
 
+function loadUserEmail() {
+    const userEmail = localStorage.getItem('userEmail') || 'default@example.com';
+    document.getElementById('user-email').value = userEmail;
+}
+
+function saveUserEmail(email) {
+    localStorage.setItem('userEmail', email);
+}
+
 async function generateFormula() {
     const promptInput = document.getElementById('prompt-input');
+    const userEmailInput = document.getElementById('user-email');
     const generateBtn = document.getElementById('generate-btn');
     const resultSection = document.getElementById('result-section');
     const errorSection = document.getElementById('error-section');
     
     const prompt = promptInput.value.trim();
+    const userEmail = userEmailInput.value.trim() || 'default@example.com';
     
     if (!prompt) {
         showError('Please enter a description of what you want to calculate.');
         return;
     }
+    
+    // Save user email
+    saveUserEmail(userEmail);
     
     // Show loading state
     generateBtn.classList.add('loading');
@@ -41,13 +58,16 @@ async function generateFormula() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt })
+            body: JSON.stringify({ prompt, userEmail })
         });
         
         const data = await response.json();
         
-        if (data.success) {
-            showResult(data.formula, data.explanation);
+        if (response.status === 429) {
+            // Usage limit exceeded
+            showUsageLimitError(data.error, data.currentUsage, data.limit);
+        } else if (data.success) {
+            showResult(data.formula, data.explanation, data.usage);
         } else {
             showError(data.error || 'Failed to generate formula');
         }
@@ -61,16 +81,49 @@ async function generateFormula() {
     }
 }
 
-function showResult(formula, explanation) {
+function showResult(formula, explanation, usage) {
     const resultSection = document.getElementById('result-section');
     const formulaDisplay = document.getElementById('formula-display');
     const explanationDisplay = document.getElementById('explanation-display');
+    const usageDisplay = document.getElementById('usage-display');
     
     formulaDisplay.textContent = formula;
     explanationDisplay.textContent = explanation;
     
+    // Show usage information
+    if (usage) {
+        usageDisplay.innerHTML = `
+            <div class="usage-info">
+                <span class="usage-text">Usage: ${usage.current}/${usage.limit} messages</span>
+                <span class="usage-remaining">(${usage.remaining} remaining)</span>
+            </div>
+        `;
+        usageDisplay.style.display = 'block';
+    } else {
+        usageDisplay.style.display = 'none';
+    }
+    
     resultSection.style.display = 'block';
     hideError();
+}
+
+function showUsageLimitError(message, currentUsage, limit) {
+    const errorSection = document.getElementById('error-section');
+    const errorMessage = document.getElementById('error-message');
+    
+    errorMessage.innerHTML = `
+        <div class="usage-limit-error">
+            <div class="error-text">${message}</div>
+            <div class="usage-details">
+                You've used ${currentUsage} of ${limit} free messages this month.
+            </div>
+            <div class="upgrade-suggestion">
+                Contact support to upgrade your plan for unlimited access.
+            </div>
+        </div>
+    `;
+    errorSection.style.display = 'block';
+    hideResult();
 }
 
 function showError(message) {

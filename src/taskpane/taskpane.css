@@ -38,6 +38,39 @@ body {
     font-weight: 300;
 }
 
+/* User section */
+.user-section {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.user-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 1em;
+}
+
+.email-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
 /* Input section */
 .input-section {
     background: white;
@@ -182,6 +215,32 @@ body {
     border: 2px solid #e9ecef;
 }
 
+/* Usage display */
+.usage-display {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    background: #e8f5e8;
+    border: 1px solid #c3e6c3;
+    border-radius: 8px;
+}
+
+.usage-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.usage-text {
+    font-weight: 600;
+    color: #2d5a2d;
+}
+
+.usage-remaining {
+    color: #6c757d;
+    font-size: 12px;
+}
+
 .secondary-btn {
     width: 100%;
     padding: 12px 20px;
@@ -213,6 +272,34 @@ body {
     font-weight: 500;
 }
 
+/* Usage limit error styles */
+.usage-limit-error {
+    text-align: center;
+}
+
+.usage-limit-error .error-text {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #dc3545;
+}
+
+.usage-limit-error .usage-details {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.usage-limit-error .upgrade-suggestion {
+    font-size: 12px;
+    color: #28a745;
+    font-weight: 500;
+    padding: 8px 12px;
+    background: #d4edda;
+    border-radius: 6px;
+    border: 1px solid #c3e6c3;
+}
+
 /* Loading state */
 .btn-loading {
     display: none;
@@ -237,7 +324,8 @@ body {
     }
     
     .input-section,
-    .result-section {
+    .result-section,
+    .user-section {
         padding: 20px;
     }
 }
